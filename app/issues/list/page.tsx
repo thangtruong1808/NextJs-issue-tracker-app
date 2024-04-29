@@ -52,7 +52,10 @@ const IssuePage = async ({
         <Table.Header>
           <Table.Row>
             {columns.map((column) => (
-              <Table.ColumnHeaderCell key={column.value}>
+              <Table.ColumnHeaderCell
+                key={column.value}
+                className={column.className}
+              >
                 <NextLink
                   href={{
                     query: { ...searchParams, orderBy: column.value },
@@ -79,7 +82,9 @@ const IssuePage = async ({
               <Table.Cell className="hidden md:table-cell">
                 <IssueStatusBadge status={issue.status} />
               </Table.Cell>
-              <Table.Cell>{issue.createdAt.toDateString()}</Table.Cell>
+              <Table.Cell className="hidden md:table-cell">
+                {issue.createdAt.toDateString()}
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
